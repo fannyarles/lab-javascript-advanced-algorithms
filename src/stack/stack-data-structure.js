@@ -4,24 +4,43 @@ class Stack {
     this.MAX_SIZE = 10;
   }
 
+  //When called, canPush should return true if the stack is not full, 
+  // false if it is full.
   canPush() {
-    // ... your code goes here
+    if (this.stackControl.length < this.MAX_SIZE) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
+  // When called, isEmpty should return true if the stack is empty, false if it holds any item.
   isEmpty() {
-    // ... your code goes here
+    if (this.stackControl.length === 0) { return true; } else { return false; }
   }
 
   push(item) {
-    // ... your code goes here
+    if (this.canPush()) {
+      this.stackControl.push(item);
+      return this.stackControl;
+    } else {
+      throw new Error('STACK_OVERFLOW');
+    }
   }
 
   pop() {
-    // ... your code goes here
+
+    if ( this.isEmpty() ) {
+      throw new Error('STACK_UNDERFLOW');
+    }
+
+    const deletedItem = this.stackControl.pop();
+    return deletedItem;
+
   }
 
   display() {
-    // ... your code goes here
+    return this.stackControl;
   }  
 }
 
